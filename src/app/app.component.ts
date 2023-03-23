@@ -8,19 +8,16 @@ import { PersonasService } from './persona.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
+
+  
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
   titulo = 'Lista-Persona-100Real';
 
 /* personas : Persona[] = [
   new Persona('luis','velasco'),new Persona('zoe','velasco'),new Persona('juan','perez')
 ]; */
-
-constructor(private personaService : PersonasService){}
-
-personas : Persona[] =[];
-
-ngOnInit(): void{
-this.personas = this.personaService.personas;
-}
 
 
 
