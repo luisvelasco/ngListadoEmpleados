@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Persona } from '../persona.model';
 import { PersonasService } from '../persona.service';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-personas',
@@ -16,7 +17,14 @@ constructor(private personaService : PersonasService,
   ){}
 
 ngOnInit(): void{
-this.personas = this.personaService.personas;
+//this.personas = this.personaService.personas;
+this.personaService.obtenerPersona()
+.subscribe(
+  (personas: Persona[] = []) => {
+    this.personas = personas;
+    this.personaService.setPersonas(this.personas);
+  }
+);
 }
 
 agregar(){
